@@ -1,4 +1,4 @@
-from queja import Queja
+from Queja import Queja
 
 
 class ListaQuejas:

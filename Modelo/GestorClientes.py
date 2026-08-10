@@ -1,4 +1,4 @@
-from gestor_base import GestorBase
+from GestorBase import GestorBase
 
 
 class GestorClientes(GestorBase):

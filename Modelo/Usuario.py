@@ -1,6 +1,4 @@
 from abc import ABC, abstractmethod
-
-
 class Usuario(ABC):
    
     def __init__(self, cedula: str, nombre: str, direccion: str,

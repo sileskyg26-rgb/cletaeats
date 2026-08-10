@@ -1,4 +1,4 @@
-from combo import Combo
+from Combo import Combo
 
 
 class MenuRestaurante:

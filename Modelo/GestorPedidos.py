@@ -1,5 +1,5 @@
-from gestor_base import GestorBase
-from pedido import Pedido
+from GestorBase import GestorBase
+from Pedido import Pedido
 
 
 class GestorPedidos(GestorBase):
