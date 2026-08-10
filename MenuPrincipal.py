@@ -1,5 +1,5 @@
 from GestorClientes import GestorClientes
-from GestorRestarurantes import GestorRestaurantes
+from GestorRestaurantes import GestorRestaurantes
 from GestorRepartidores import GestorRepartidores
 from GestorPedidos import GestorPedidos
 from GeneradorReportes import GeneradorReportes

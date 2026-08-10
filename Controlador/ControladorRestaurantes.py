@@ -1,7 +1,6 @@
-from modelo.restaurante import Restaurante
-from modelo.combo import Combo
-from modelo.gestor_restaurantes import GestorRestaurantes
-
+from Modelo.Restaurante import Restaurante
+from Modelo.Combo import Combo
+from Modelo.GestorRestaurantes import GestorRestaurantes
 
 class ControladorRestaurantes:
 
@@ -36,11 +35,14 @@ class ControladorRestaurantes:
             return False, str(e)
 
     def ver_menu(self, cedula_juridica: str):
+        """Devuelve la lista de objetos Combo del restaurante (no texto),
+        para que la vista use combo.numero, combo.descripcion y combo.precio
+        sin depender del formato de __str__."""
         restaurante = self._gestor_restaurantes.buscar_por_cedula(
             cedula_juridica)
         if restaurante is None:
             return None, "Restaurante no encontrado"
-        return restaurante.menu.listar_combos(), None
+        return restaurante.menu.combos, None
 
     def listar_restaurantes(self) -> list:
         return self._gestor_restaurantes.listar()

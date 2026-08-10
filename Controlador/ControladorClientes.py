@@ -1,5 +1,5 @@
-from modelo.cliente import Cliente
-from modelo.gestor_clientes import GestorClientes
+from Modelo.Cliente import Cliente
+from Modelo.GestorClientes import GestorClientes
 
 
 class ControladorClientes:

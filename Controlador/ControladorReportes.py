@@ -1,6 +1,6 @@
  
 
-from modelo.generador_reportes import GeneradorReportes
+from Modelo.GeneradorReportes import GeneradorReportes
 
 
 class ControladorReportes:

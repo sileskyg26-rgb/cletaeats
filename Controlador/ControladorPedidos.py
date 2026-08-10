@@ -1,8 +1,8 @@
-from modelo.gestor_pedidos import GestorPedidos
-from modelo.gestor_clientes import GestorClientes
-from modelo.gestor_restaurantes import GestorRestaurantes
-from modelo.gestor_repartidores import GestorRepartidores
-from modelo.factura import Factura
+from Modelo.GestorPedidos import GestorPedidos
+from Modelo.GestorClientes import GestorClientes
+from Modelo.GestorRestaurantes import GestorRestaurantes
+from Modelo.GestorRepartidores import GestorRepartidores
+from Modelo.Factura import Factura
 
 
 class ControladorPedidos:

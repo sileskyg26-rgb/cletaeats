@@ -1,16 +1,16 @@
 import os
 
-from modelo.gestor_clientes import GestorClientes
-from modelo.gestor_restaurantes import GestorRestaurantes
-from modelo.gestor_repartidores import GestorRepartidores
-from modelo.gestor_pedidos import GestorPedidos
-from modelo.generador_reportes import GeneradorReportes
-from modelo.archivo_texto import ArchivoTexto
+from Modelo.GestorClientes import GestorClientes
+from Modelo.GestorRestaurantes import GestorRestaurantes
+from Modelo.GestorRepartidores import GestorRepartidores
+from Modelo.GestorPedidos import GestorPedidos
+from Modelo.GeneradorReportes import GeneradorReportes
+from Modelo.ArchivoTexto import ArchivoTexto
 
-from modelo.cliente import Cliente
-from modelo.restaurante import Restaurante
-from modelo.repartidor import Repartidor
-from modelo.combo import Combo
+from Modelo.Cliente import Cliente
+from Modelo.Restaurante import Restaurante
+from Modelo.Repartidor import Repartidor
+from Modelo.Combo import Combo
 
 
 CARPETA_DATOS = os.path.join(os.path.dirname(__file__), "..", "datos")
