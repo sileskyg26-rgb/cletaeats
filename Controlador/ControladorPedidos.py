@@ -10,15 +10,21 @@ class ControladorPedidos:
     def __init__(self, gestor_pedidos: GestorPedidos,
                  gestor_clientes: GestorClientes,
                  gestor_restaurantes: GestorRestaurantes,
-                 gestor_repartidores: GestorRepartidores):
+                 gestor_repartidores: GestorRepartidores,
+                 controlador_principal=None):
         self._gestor_pedidos = gestor_pedidos
         self._gestor_clientes = gestor_clientes
         self._gestor_restaurantes = gestor_restaurantes
         self._gestor_repartidores = gestor_repartidores
+        self._controlador_principal = controlador_principal
         print("[ControladorPedidos] Constructor: controlador creado")
 
     def __del__(self):
         print("[ControladorPedidos] Destructor: controlador eliminado")
+
+    def _guardar(self):
+        if self._controlador_principal is not None:
+            self._controlador_principal.guardar_todo()
 
     def hacer_pedido(self, cedula_cliente: str,
                       cedula_juridica_restaurante: str,
@@ -36,6 +42,7 @@ class ControladorPedidos:
             pedido = self._gestor_pedidos.crear_pedido(
                 cliente, restaurante, self._gestor_repartidores,
                 numeros_combos)
+            self._guardar()
             return pedido, None
         except (PermissionError, ValueError, RuntimeError) as e:
             return None, str(e)
@@ -50,6 +57,7 @@ class ControladorPedidos:
             factura = Factura(pedido, km_recorridos, es_feriado)
             pedido.estado = "entregado"
             pedido.repartidor.estado = "disponible"
+            self._guardar()
             return factura, None
         except ValueError as e:
             return None, str(e)

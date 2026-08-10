@@ -1,6 +1,8 @@
 import os
-import ManejadorArchivo
-class ArchivoTexto(ManejadorArchivo.ManejadorArchivos):
+from Modelo.ManejadorArchivo import ManejadorArchivo
+
+
+class ArchivoTexto(ManejadorArchivo):
 
     def __init__(self, ruta_archivo: str):
         self._ruta_archivo = ruta_archivo

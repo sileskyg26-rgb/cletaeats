@@ -1,3 +1,8 @@
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import streamlit as st
 
 from Controlador.ControladorPrincipal import ControladorPrincipal
@@ -27,14 +32,21 @@ class App:
 
         principal = st.session_state["controlador_principal"]
 
-        self._controlador_clientes = ControladorClientes(principal.gestor_clientes)
-        self._controlador_restaurantes = ControladorRestaurantes(principal.gestor_restaurantes)
-        self._controlador_repartidores = ControladorRepartidores(principal.gestor_repartidores)
+        # CREACIÓN DE OBJETOS: acá es donde se instancian los objetos
+        # principales del sistema (cada Controlador es un objeto nuevo,
+        # creado a partir de su clase con paréntesis, como Cliente() o
+        # Combo() en cualquier otro lado del código). Como esto es una app
+        # de Streamlit y no un script de consola, este método hace el papel
+        # que haría un "main": es el punto donde arranca todo.
+        self._controlador_clientes = ControladorClientes(principal.gestor_clientes, principal)
+        self._controlador_restaurantes = ControladorRestaurantes(principal.gestor_restaurantes, principal)
+        self._controlador_repartidores = ControladorRepartidores(principal.gestor_repartidores, principal)
         self._controlador_pedidos = ControladorPedidos(
             principal.gestor_pedidos,
             principal.gestor_clientes,
             principal.gestor_restaurantes,
             principal.gestor_repartidores,
+            principal,
         )
         self._controlador_reportes = ControladorReportes(principal.reportes)
 
@@ -45,7 +57,8 @@ class App:
         self._vista_pedido = VistaPedido(self._controlador_pedidos, self._controlador_restaurantes)
         self._vista_reportes = VistaReportes(self._controlador_reportes)
         self._vista_menu_principal = VistaMenuPrincipal(
-            self._vista_restaurante, self._vista_pedido, self._vista_reportes
+            self._vista_restaurante, self._vista_repartidor,
+            self._vista_pedido, self._vista_reportes
         )
 
     def ejecutar(self):
@@ -57,5 +70,9 @@ class App:
             self._vista_menu_principal.mostrar()
 
 
+# Este if es el equivalente en Python al "main" de otros lenguajes: el
+# código de acá adentro solo corre cuando este archivo se ejecuta
+# directamente (streamlit run Vista/app.py), no cuando otro archivo lo
+# importa. App() crea el objeto principal de la aplicación.
 if __name__ == "__main__":
     App().ejecutar()

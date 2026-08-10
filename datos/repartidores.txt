@@ -1,0 +1,1 @@
+cedula=401001123|nombre=Oscar Paniagua|direccion=Alajuela Grecia|telefono=87364866|correo=oscarph04@hotmail.com|numero_tarjeta=2900893009870|estado=disponible|numero_amonestaciones=0|km_recorridos_diarios=0.0|quejas=

@@ -1,4 +1,4 @@
-from GestorBase import GestorBase
+from Modelo.GestorBase import GestorBase
 
 
 class GestorRestaurantes(GestorBase):

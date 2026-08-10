@@ -4,14 +4,16 @@ class VistaMenuPrincipal:
 
     OPCIONES = [
         "Restaurantes",
+        "Repartidores",
         "Hacer pedido",
         "Mis pedidos",
         "Reportes",
         "Cerrar sesion",
     ]
 
-    def __init__(self, vista_restaurante, vista_pedido, vista_reportes):
+    def __init__(self, vista_restaurante, vista_repartidor, vista_pedido, vista_reportes):
         self._vista_restaurante = vista_restaurante
+        self._vista_repartidor = vista_repartidor
         self._vista_pedido = vista_pedido
         self._vista_reportes = vista_reportes
 
@@ -24,6 +26,8 @@ class VistaMenuPrincipal:
 
         if opcion == "Restaurantes":
             self._vista_restaurante.mostrar()
+        elif opcion == "Repartidores":
+            self._vista_repartidor.mostrar()
         elif opcion == "Hacer pedido":
             self._vista_pedido.mostrar_formulario_pedido()
         elif opcion == "Mis pedidos":

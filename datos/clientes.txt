@@ -1,0 +1,1 @@
+cedula=208490835|nombre=Lausen Paniagua|direccion=Grecia, Alajuela|telefono=76543343|correo=lausen2104@gmail.com|numero_tarjeta=3442884889292777|estado=activo

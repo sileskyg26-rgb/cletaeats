@@ -3,10 +3,10 @@ from datetime import datetime
 
 class Queja:
 
-    def __init__(self, descripcion: str = "", cedula_cliente: str = ""):
+    def __init__(self, descripcion: str = "", cedula_cliente: str = "", fecha: datetime = None):
         self._descripcion = descripcion
         self._cedula_cliente = cedula_cliente
-        self._fecha = datetime.now()
+        self._fecha = fecha if fecha is not None else datetime.now()
         print(f"[Queja] Constructor: queja registrada")
 
     def __del__(self):

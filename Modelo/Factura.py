@@ -4,6 +4,7 @@ class Factura:
         self._pedido = pedido
         self._km_recorridos = km_recorridos
         self._es_feriado = es_feriado
+        pedido.repartidor.km_recorridos_diarios += km_recorridos
         print(f"[Factura] Constructor: factura del pedido #{pedido.id} creada")
 
     def __del__(self):
@@ -22,8 +23,11 @@ class Factura:
         return repartidor.calcular_costo_transporte(self._es_feriado)
 
     def calcular_iva(self) -> float:
-        return self.calcular_subtotal() * IVA
+        return self.calcular_subtotal() * self.IVA
 
+    # MÉTODO DE CÁLCULO: no guarda ningún dato nuevo, solo hace una cuenta
+    # a partir de otros métodos de cálculo de la propia clase (subtotal +
+    # transporte + iva). Este es el que arma el monto final de la factura.
     def calcular_total(self) -> float:
         return self.calcular_subtotal() + self.calcular_transporte() + self.calcular_iva()
 

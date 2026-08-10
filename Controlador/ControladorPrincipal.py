@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 from Modelo.GestorClientes import GestorClientes
 from Modelo.GestorRestaurantes import GestorRestaurantes
@@ -98,6 +99,10 @@ class ControladorPrincipal:
                     "numero_tarjeta": rep.numero_tarjeta,
                     "estado": rep.estado,
                     "numero_amonestaciones": rep.numero_amonestaciones,
+                    "km_recorridos_diarios": rep.km_recorridos_diarios,
+                    "quejas": ";".join(
+                        f"{q.descripcion}~{q.cedula_cliente}~{q.fecha.isoformat()}"
+                        for q in rep.quejas_registradas),
                 }
                 for rep in self._gestor_repartidores.listar()
             ])
@@ -134,6 +139,17 @@ class ControladorPrincipal:
                     datos["telefono"], datos["correo"],
                     datos["numero_tarjeta"],
                     datos.get("estado", "disponible"))
+                repartidor.restaurar_amonestaciones(
+                    int(datos.get("numero_amonestaciones", 0) or 0))
+                repartidor.km_recorridos_diarios = float(
+                    datos.get("km_recorridos_diarios", 0.0) or 0.0)
+                quejas_str = datos.get("quejas", "")
+                if quejas_str:
+                    for par in quejas_str.split(";"):
+                        descripcion, _, resto = par.partition("~")
+                        cedula_cliente, _, fecha_str = resto.partition("~")
+                        fecha = datetime.fromisoformat(fecha_str) if fecha_str else None
+                        repartidor.cargar_queja(descripcion, cedula_cliente, fecha)
                 self._gestor_repartidores.agregar(repartidor)
             return True, None
         except Exception as e:

@@ -1,6 +1,10 @@
-from Combo import Combo
+from Modelo.Combo import Combo
 
 
+# Esta es la clase Menu que pide el enunciado: agrupa todos los Combos
+# de UN restaurante. En vez de que Restaurante guarde una lista de combos
+# suelta por su cuenta, le delegamos esa responsabilidad a esta clase
+# aparte (así cada clase hace una sola cosa y la hace bien).
 class MenuRestaurante:
 
     def __init__(self):

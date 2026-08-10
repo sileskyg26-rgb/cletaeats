@@ -1,5 +1,5 @@
-from GestorBase import GestorBase
-from Pedido import Pedido
+from Modelo.GestorBase import GestorBase
+from Modelo.Pedido import Pedido
 
 
 class GestorPedidos(GestorBase):

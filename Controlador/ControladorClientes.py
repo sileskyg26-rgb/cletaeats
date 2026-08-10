@@ -4,12 +4,17 @@ from Modelo.GestorClientes import GestorClientes
 
 class ControladorClientes:
 
-    def __init__(self, gestor_clientes: GestorClientes):
+    def __init__(self, gestor_clientes: GestorClientes, controlador_principal=None):
         self._gestor_clientes = gestor_clientes
+        self._controlador_principal = controlador_principal
         print("[ControladorClientes] Constructor: controlador creado")
 
     def __del__(self):
         print("[ControladorClientes] Destructor: controlador eliminado")
+
+    def _guardar(self):
+        if self._controlador_principal is not None:
+            self._controlador_principal.guardar_todo()
 
     def registrar_cliente(self, cedula: str, nombre: str, direccion: str,
                            telefono: str, correo: str, numero_tarjeta: str):
@@ -17,6 +22,7 @@ class ControladorClientes:
             cliente = Cliente(cedula, nombre, direccion, telefono,
                                correo, numero_tarjeta)
             self._gestor_clientes.agregar(cliente)
+            self._guardar()
             return cliente, None
         except ValueError as e:
             return None, str(e)
@@ -44,6 +50,7 @@ class ControladorClientes:
             return False, "Cliente no encontrado"
         try:
             cliente.estado = "suspendido"
+            self._guardar()
             return True, None
         except ValueError as e:
             return False, str(e)
@@ -54,6 +61,7 @@ class ControladorClientes:
             return False, "Cliente no encontrado"
         try:
             cliente.estado = "activo"
+            self._guardar()
             return True, None
         except ValueError as e:
             return False, str(e)

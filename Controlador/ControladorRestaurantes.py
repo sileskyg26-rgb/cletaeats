@@ -4,12 +4,17 @@ from Modelo.GestorRestaurantes import GestorRestaurantes
 
 class ControladorRestaurantes:
 
-    def __init__(self, gestor_restaurantes: GestorRestaurantes):
+    def __init__(self, gestor_restaurantes: GestorRestaurantes, controlador_principal=None):
         self._gestor_restaurantes = gestor_restaurantes
+        self._controlador_principal = controlador_principal
         print("[ControladorRestaurantes] Constructor: controlador creado")
 
     def __del__(self):
         print("[ControladorRestaurantes] Destructor: controlador eliminado")
+
+    def _guardar(self):
+        if self._controlador_principal is not None:
+            self._controlador_principal.guardar_todo()
 
     def registrar_restaurante(self, nombre: str, cedula_juridica: str,
                                direccion: str, tipo_comida: str):
@@ -17,6 +22,7 @@ class ControladorRestaurantes:
             restaurante = Restaurante(nombre, cedula_juridica,
                                        direccion, tipo_comida)
             self._gestor_restaurantes.agregar(restaurante)
+            self._guardar()
             return restaurante, None
         except ValueError as e:
             return None, str(e)
@@ -30,6 +36,7 @@ class ControladorRestaurantes:
         try:
             combo = Combo(numero, descripcion)
             restaurante.menu.agregar_combo(combo)
+            self._guardar()
             return True, None
         except ValueError as e:
             return False, str(e)

@@ -1,4 +1,4 @@
-from Queja import Queja
+from Modelo.Queja import Queja
 
 
 class ListaQuejas:

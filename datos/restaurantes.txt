@@ -1,0 +1,1 @@
+nombre=La Parrillita de Pepe|cedula_juridica=4-0100-9898|direccion=Alajuela|tipo_comida=rapida|combos=1:Hamburguesa;2:Hamburguesa Triple;3:Hamburguesa y Gaseosa

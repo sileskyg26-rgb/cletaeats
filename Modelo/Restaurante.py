@@ -1,10 +1,15 @@
-from MenuRestaurante import MenuRestaurante
+from Modelo.MenuRestaurante import MenuRestaurante
+from Modelo.Validaciones import validar_cedula, validar_no_vacio
 
 
 class Restaurante:
 
     def __init__(self, nombre: str = "", cedula_juridica: str = "",
                  direccion: str = "", tipo_comida: str = ""):
+        validar_no_vacio(nombre, "El nombre")
+        validar_cedula(cedula_juridica, "La cédula jurídica")
+        validar_no_vacio(direccion, "La dirección")
+        validar_no_vacio(tipo_comida, "El tipo de comida")
         self._nombre = nombre
         self._cedula_juridica = cedula_juridica
         self._direccion = direccion
@@ -22,6 +27,7 @@ class Restaurante:
 
     @nombre.setter
     def nombre(self, valor: str):
+        validar_no_vacio(valor, "El nombre")
         self._nombre = valor
 
     @property
@@ -30,6 +36,7 @@ class Restaurante:
 
     @cedula_juridica.setter
     def cedula_juridica(self, valor: str):
+        validar_cedula(valor, "La cédula jurídica")
         self._cedula_juridica = valor
 
     @property
@@ -38,6 +45,7 @@ class Restaurante:
 
     @direccion.setter
     def direccion(self, valor: str):
+        validar_no_vacio(valor, "La dirección")
         self._direccion = valor
 
     @property
@@ -46,6 +54,7 @@ class Restaurante:
 
     @tipo_comida.setter
     def tipo_comida(self, valor: str):
+        validar_no_vacio(valor, "El tipo de comida")
         self._tipo_comida = valor
 
     @property
