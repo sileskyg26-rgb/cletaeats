@@ -1,13 +1,13 @@
-from gestor_clientes import GestorClientes
-from gestor_restaurantes import GestorRestaurantes
-from gestor_repartidores import GestorRepartidores
-from gestor_pedidos import GestorPedidos
-from generador_reportes import GeneradorReportes
-from cliente import Cliente
-from restaurante import Restaurante
-from repartidor import Repartidor
-from combo import Combo
-from factura import Factura
+from GestorClientes import GestorClientes
+from GestorRestarurantes import GestorRestaurantes
+from GestorRepartidores import GestorRepartidores
+from GestorPedidos import GestorPedidos
+from GeneradorReportes import GeneradorReportes
+from Cliente import Cliente
+from Restaurante import Restaurante
+from Repartidor import Repartidor
+from Combo import Combo
+from Factura import Factura
 
 
 class MenuPrincipal:

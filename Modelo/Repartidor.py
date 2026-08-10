@@ -1,6 +1,6 @@
-from usuario import Usuario
-from queja import Queja
-from lista_quejas import ListaQuejas
+from Usuario import Usuario
+from Modelo.Queja import Queja
+from ListaQuejas import ListaQuejas
 
 
 class Repartidor(Usuario):
